@@ -6,12 +6,10 @@
     <!--       we should have an initial mixer setting (default value) -->
     <ctl name="TTY Mode" value="OFF" />
     <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="0" />
-    <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="HDMI Mixer MultiMedia1" value="0" />
     <ctl name="AUX_PCM_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia3" value="0" />
-    <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia3" value="0" />
     <ctl name="HDMI Mixer MultiMedia3" value="0" />
     <ctl name="AUX_PCM_RX Audio Mixer MultiMedia3" value="0" />
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia3" value="0" />
@@ -47,15 +45,10 @@
     <ctl name="AUX_PCM_RX_Voice Mixer Voip" value="0" />
     <ctl name="Voip_Tx Mixer AUX_PCM_TX_Voip" value="0" />
     <ctl name="Voip_Tx Mixer AUX_PCM_UL_Voip" value="0" />
-    <ctl name="SLIMBUS_0_RX Port Mixer INTERNAL_FM_TX" value="0" />
-    <ctl name="AFE_PCM_RX Port Mixer INTERNAL_FM_TX" value="0" />
     <ctl name="PCM_RX_DL_HL Switch" value="0" />
-    <ctl name="MultiMedia1 Mixer INTERNAL_FM_TX" value="0" />
-    <ctl name="MultiMedia2 Mixer INTERNAL_FM_TX" value="0" />
     <ctl name="MultiMedia1 Mixer VOC_REC_UL" value="0" />
     <ctl name="MultiMedia1 Mixer VOC_REC_DL" value="0" />
     <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia4" value="0" />
-    <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia4" value="0" />
     <ctl name="HDMI Mixer MultiMedia4" value="0" />
     <ctl name="AUX_PCM_RX Audio Mixer MultiMedia4" value="0" />
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia4" value="0" />
@@ -64,7 +57,6 @@
     <ctl name="MultiMedia5 Mixer AUX_PCM_UL_TX" value="0" />
     <ctl name="MultiMedia5 Mixer AFE_PCM_TX" value="0" />
     <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia5" value="0" />
-    <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia5" value="0" />
     <ctl name="HDMI Mixer MultiMedia5" value="0" />
     <ctl name="SEC_RX Audio Mixer MultiMedia5" value="0" />
     <ctl name="AUX_PCM_RX Audio Mixer MultiMedia5" value="0" />
@@ -78,7 +70,6 @@
     <ctl name="RX5 MIX1 INP1" value="ZERO" />
     <ctl name="RX5 MIX1 INP2" value="ZERO" />
     <ctl name="SLIM_1 SampleRate" value="8000" />
-    <ctl name="Internal FM RX Volume" value="1" />
     <ctl name="LINEOUT1 Volume" value="0" />
     <ctl name="LINEOUT2 Volume" value="0" />
     <ctl name="LINEOUT3 Volume" value="0" />
@@ -153,17 +144,6 @@
           <ctl name="HDMI Mixer MultiMedia1" value="1" />
      </path>
 
-     <path name="deep-buffer-playback transmission-fm">
-          <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia1" value="1" />
-     </path>
-
-  <!--
-     <path name="deep-buffer-playback speaker transmission-fm">
-          <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia1" value="1" />
-          <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
-     </path>
-   -->
-
      <path name="deep-buffer-playback speaker-and-hdmi">
          <ctl name="HDMI Mixer MultiMedia1" value="1"/>
          <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
@@ -200,10 +180,6 @@
      <!-- LLA BEGIN -->
      <path name="low-latency-playback">
           <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia5" value="1" />
-     </path>
-
-     <path name="low-latency-playback transmission-fm">
-          <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia5" value="1" />
      </path>
 
      <path name="low-latency-playback hdmi">
@@ -255,37 +231,6 @@
      </path>
 
      <!-- LLA END -->
-     <!-- LPA Begin -->
-     <path name="ultra-low-latency-playback">
-          <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia3" value="1" />
-     </path>
-     <path name="ultra-low-latency-playback transmission-fm">
-          <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia3" value="1" />
-     </path>
-
-     <path name="ultra-low-latency-playback hdmi">
-          <ctl name="HDMI Mixer MultiMedia3" value="1" />
-     </path>
-
-     <path name="ultra-low-latency-playback speaker-and-hdmi">
-          <ctl name="HDMI Mixer MultiMedia3" value="1" />
-          <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia3" value="1" />
-     </path>
-
-     <path name="ultra-low-latency-playback bt-sco">
-          <ctl name="AUX_PCM_RX Audio Mixer MultiMedia3" value="1" />
-     </path>
-
-     <path name="ultra-low-latency-playback bt-sco-wb">
-          <ctl name="AUX_PCM_RX Audio Mixer MultiMedia3" value="1" />
-     </path>
-     <path name="ultra-low-latency-playback afe-proxy">
-          <ctl name="AFE_PCM_RX Audio Mixer MultiMedia3" value="1" />
-     </path>
-     <path name="ultra-low-latency-playback usb-headphones">
-          <ctl name="AFE_PCM_RX Audio Mixer MultiMedia3" value="1" />
-     </path>
-     <!--LPA end -->
      <!--
      <path name="multi-channel-playback hdmi">
          <ctl name="HDMI Mixer MultiMedia1" value="1" />
@@ -317,10 +262,6 @@
           <ctl name="MultiMedia1 Mixer AFE_PCM_TX" value="1" />
      </path>
 
-     <path name="audio-record capture-fm">
-          <ctl name="MultiMedia1 Mixer INTERNAL_FM_TX" value="1" />
-     </path>
-
      <path name="low-latency-record">
        <ctl name="MultiMedia5 Mixer SLIM_0_TX" value="1" />
      </path>
@@ -335,26 +276,6 @@
      </path>
      <path name="low-latency-record usb-headset-mic">
        <ctl name="MultiMedia5 Mixer AFE_PCM_TX" value="1" />
-     </path>
-     <!-- Audio Recording -->
-     <path name="play-fm">
-          <ctl name="Internal FM RX Volume" value="0" />
-          <ctl name="SLIMBUS_0_RX Port Mixer INTERNAL_FM_TX" value="1" />
-          <ctl name="SLIMBUS_DL_HL Switch" value="1" />
-     </path>
-
-     <path name="play-fm afe-proxy">
-          <ctl name="Internal FM RX Volume" value="0" />
-          <ctl name="AFE_PCM_RX Port Mixer INTERNAL_FM_TX" value="1" />
-          <ctl name="PCM_RX_DL_HL Switch" value="1" />
-     </path>
-
-     <path name="play-fm usb-headphones">
-          <path name="play-fm afe-proxy" />
-     </path>
-
-     <path name="fm-virtual-record capture-fm">
-          <ctl name="MultiMedia1 Mixer INTERNAL_FM_TX" value="1" />
      </path>
 
      <!-- Calling -->
@@ -459,37 +380,6 @@
          <path name="incall-rec-uplink-and-downlink" />
      </path>
      <!-- Call Recording end -->
-     <!--Tunnel -->
-     <path name="compress-offload-playback">
-          <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia4" value="1" />
-     </path>
-
-     <path name="compress-offload-playback hdmi">
-          <ctl name="HDMI Mixer MultiMedia4" value="1" />
-     </path>
-
-     <path name="compress-offload-playback speaker-and-hdmi">
-          <ctl name="HDMI Mixer MultiMedia4" value="1" />
-          <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia4" value="1" />
-     </path>
-     <path name="compress-offload-playback speaker-and-headphones">
-          <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia4" value="1" />
-          <ctl name="AFE_PCM_RX Audio Mixer MultiMedia4" value="1" />
-     </path>
-     <path name="compress-offload-playback transmission-fm">
-          <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia4" value="1" />
-     </path>
-     <path name="compress-offload-playback bt-sco">
-          <ctl name="AUX_PCM_RX Audio Mixer MultiMedia4" value="1" />
-     </path>
-     <path name="compress-offload-playback afe-proxy">
-          <ctl name="AFE_PCM_RX Audio Mixer MultiMedia4" value="1" />
-     </path>
-     <path name="compress-offload-playback usb-headphones">
-          <ctl name="AFE_PCM_RX Audio Mixer MultiMedia4" value="1" />
-     </path>
-     <!-- End Tunnel -->
-
 
 <!-- These are actual sound device specific mixer settings (WORK IN PROGRESS)-->
 
@@ -899,10 +789,6 @@
          <ctl name="LINEOUT1 Volume" value="100" />
          <ctl name="LINEOUT3 Volume" value="100" />
          <ctl name="SLIM TX3 MUX" value="RMIX3" />
-     </path>
-     <path name="capture-fm">
-     </path>
-     <path name="transmission-fm">
      </path>
      <path name="afe-proxy">
      </path>
