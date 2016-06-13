@@ -34,6 +34,44 @@
 #include "property_service.h"
 #include "log.h"
 #include "util.h"
+#include "init_msm.h"
+
+void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
+{
+    char platform[PROP_VALUE_MAX];
+    char bootloader[PROP_VALUE_MAX];
+    char device[PROP_VALUE_MAX];
+    char devicename[PROP_VALUE_MAX];
+    int rc;
+    
+    UNUSED(msm_id);
+    UNUSED(msm_ver);
+    UNUSED(board_type);
+
+    rc = property_get("ro.board.platform", platform);
+    if (!rc || !ISMATCH(platform, ANDROID_TARGET))
+        return;
+
+    property_get("ro.bootloader", bootloader);
+
+    if (strstr(bootloader, "I9515")) {
+        /* jfveltexx - GT-i9515 */
+        property_set("ro.build.fingerprint", "samsung/jfveltexx/jfvelte:5.0.1/LRX22C/I9515XXU1BOJ3:user/release-keys");
+        property_set("ro.build.description", "jfveltexx-user 5.0.1 LRX22C I9515XXU1BOJ3 release-keys");
+        property_set("ro.product.model", "GT-I9515");
+        property_set("ro.product.device", "jfvelte");
+    } else if (strstr(bootloader, "I9515L")) {
+        /* jfvelteub  - GT-i9515L */
+        property_set("ro.build.fingerprint", "samsung/jfvelteub/jfvelte:5.0.1/LRX22C/I9515LUBU1BOJ1:user/release-keys");
+        property_set("ro.build.description", "jfvelteub-user 5.0.1 LRX22C I9515LUBU1BOJ1 release-keys");
+        property_set("ro.product.model", "GT-I9515L");
+        property_set("ro.product.device", "jfvelte");
+    }
+
+    strlcpy(devicename, device, sizeof(devicename));
+    INFO("Found bootloader id %s setting build properties for %s device\n", bootloader, devicename);
+
+}
 
 void gsm_properties();
 void cdma_properties(char cdma_sub[]);

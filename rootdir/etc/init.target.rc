@@ -337,6 +337,12 @@ service ledify /system/bin/ledify
     disabled
     oneshot
 
+service wcnss-service /system/bin/wcnss_service
+    class late_start
+    user system
+    group system wifi qcom_diag radio
+    oneshot
+	
 # insthk
 service insthk /system/bin/insthk
     class main

@@ -94,11 +94,11 @@ SectionVerb
 	Name "HiFiBT SCO Rx"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia1':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia1':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -111,11 +111,11 @@ SectionVerb
 	Name "HiFiBT SCO WB Rx"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia1':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia1':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -374,11 +374,11 @@ SectionVerb
 	Name "HiFi Low PowerBT SCO Rx"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia3':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia3':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -390,11 +390,11 @@ SectionVerb
 	Name "HiFi Low PowerBT SCO WB Rx"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia3':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia3':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -585,11 +585,11 @@ SectionVerb
 	Name "HiFi RecBT SCO Tx"
 
 	EnableSequence
-		'MultiMedia1 Mixer AUX_PCM_UL_TX':1:1
+		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
 	EndSequence
 
 	DisableSequence
-		'MultiMedia1 Mixer AUX_PCM_UL_TX':1:0
+		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -602,11 +602,11 @@ SectionVerb
 	Name "HiFi RecBT SCO WB Tx"
 
 	EnableSequence
-		'MultiMedia1 Mixer AUX_PCM_UL_TX':1:1
+		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
 	EndSequence
 
 	DisableSequence
-		'MultiMedia1 Mixer AUX_PCM_UL_TX':1:0
+		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -694,11 +694,13 @@ SectionVerb
 	EnableSequence
 		'STUB_RX Mixer Voice Stub':1:1
 		'Voice Stub Tx Mixer STUB_TX_HL':1:1
+		'Voice Stub Tx Mixer STUB_1_TX_HL':1:1
 	EndSequence
 
 	DisableSequence
 		'STUB_RX Mixer Voice Stub':1:0
 		'Voice Stub Tx Mixer STUB_TX_HL':1:0
+		'Voice Stub Tx Mixer STUB_1_TX_HL':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -751,16 +753,17 @@ SectionVerb
 	EnableSequence
 	EndSequence
 
-    DisableSequence
-        'Voice Stub Tx Mixer AUX_PCM_UL_TX':1:0
-        'SLIMBUS_1_RX Mixer Voice Stub':1:0
-        'Voice Stub Tx Mixer SLIM_1_TX':1:0
-        'AUX_PCM_RX_Voice Mixer Voice Stub':1:0
-        'SLIMBUS_1_RX Port Mixer AUX_PCM_UL_TX':1:0
-        'AUXPCM_RX Port Mixer SLIM_1_TX':1:0
-        'SLIMBUS_3_RX_Voice Mixer Voice Stub':1:0
-    'SLIMBUS_3_RX Port Mixer AUX_PCM_DL_RX':1:0
-    EndSequence
+	DisableSequence
+		'Internal BTSCO SampleRate':0:8000
+		'Voice Stub Tx Mixer INTERNAL_BT_SCO_TX':1:0
+		'SLIMBUS_1_RX Mixer Voice Stub':1:0
+		'Voice Stub Tx Mixer SLIM_1_TX':1:0
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voice Stub':1:0
+		'SLIMBUS_1_RX Port Mixer INTERNAL_BT_SCO_TX':1:0
+		'INTERNAL_BT_SCO_RX Port Mixer SLIM_1_TX':1:0
+		'SLIMBUS_3_RX_Voice Mixer Voice Stub':1:0
+		'SLIMBUS_3_RX Port Mixer INTERNAL_BT_SCO_RX':1:0
+	EndSequence
 
 	# ALSA PCMs
 	PlaybackPCM 12
@@ -771,17 +774,18 @@ EndSection
 SectionVerb
 	Name "Voice CallBT SCO Tx"
 
-    EnableSequence
-        'Voice Stub Tx Mixer AUX_PCM_UL_TX':1:1
-        'SLIMBUS_1_RX Mixer Voice Stub':1:1
-        'Voice Stub Tx Mixer SLIM_1_TX':1:1
-        'AUX_PCM_RX_Voice Mixer Voice Stub':1:1
-        'SLIMBUS_1_RX Port Mixer AUX_PCM_UL_TX':1:1
-        'AUXPCM_RX Port Mixer SLIM_1_TX':1:1
-        'SLIM_3_RX Channels':0:One
-        'SLIMBUS_3_RX_Voice Mixer Voice Stub':1:1
-    'SLIMBUS_3_RX Port Mixer AUX_PCM_DL_RX':1:1
-    EndSequence
+	EnableSequence
+		'Internal BTSCO SampleRate':0:8000
+		'Voice Stub Tx Mixer INTERNAL_BT_SCO_TX':1:1
+		'SLIMBUS_1_RX Mixer Voice Stub':1:1
+		'Voice Stub Tx Mixer SLIM_1_TX':1:1
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voice Stub':1:1
+		'SLIMBUS_1_RX Port Mixer INTERNAL_BT_SCO_TX':1:1
+		'INTERNAL_BT_SCO_RX Port Mixer SLIM_1_TX':1:1
+		'SLIM_3_RX Channels':0:One
+		'SLIMBUS_3_RX_Voice Mixer Voice Stub':1:1
+		'SLIMBUS_3_RX Port Mixer INTERNAL_BT_SCO_RX':1:1
+	EndSequence
 
 	DisableSequence
 	EndSequence
@@ -800,14 +804,14 @@ SectionVerb
 
 	DisableSequence
 		'SLIM_1 SampleRate':1:8000
-		'Voice Stub Tx Mixer AUX_PCM_UL_TX':1:0
+		'Voice Stub Tx Mixer INTERNAL_BT_SCO_TX':1:0
 		'SLIMBUS_1_RX Mixer Voice Stub':1:0
 		'Voice Stub Tx Mixer SLIM_1_TX':1:0
-		'AUX_PCM_RX_Voice Mixer Voice Stub':1:0
-		'SLIMBUS_1_RX Port Mixer AUX_PCM_UL_TX':1:0
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voice Stub':1:0
+		'SLIMBUS_1_RX Port Mixer INTERNAL_BT_SCO_TX':1:0
 		'AUXPCM_RX Port Mixer SLIM_1_TX':1:0
 		'SLIMBUS_3_RX_Voice Mixer Voice Stub':1:0
-		'SLIMBUS_3_RX Port Mixer AUX_PCM_DL_RX':1:0
+		'SLIMBUS_3_RX Port Mixer INTERNAL_BT_SCO_RX':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -820,15 +824,15 @@ SectionVerb
 	Name "Voice CallBT SCO WB Tx"
 
 	EnableSequence
-		'Voice Stub Tx Mixer AUX_PCM_UL_TX':1:1
+		'Voice Stub Tx Mixer INTERNAL_BT_SCO_TX':1:1
 		'SLIMBUS_1_RX Mixer Voice Stub':1:1
 		'Voice Stub Tx Mixer SLIM_1_TX':1:1
-		'AUX_PCM_RX_Voice Mixer Voice Stub':1:1
-		'SLIMBUS_1_RX Port Mixer AUX_PCM_UL_TX':1:1
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voice Stub':1:1
+		'SLIMBUS_1_RX Port Mixer INTERNAL_BT_SCO_TX':1:1
 		'AUXPCM_RX Port Mixer SLIM_1_TX':1:1
 		'SLIM_3_RX Channels':0:One
 		'SLIMBUS_3_RX_Voice Mixer Voice Stub':1:1
-		'SLIMBUS_3_RX Port Mixer AUX_PCM_DL_RX':1:1
+		'SLIMBUS_3_RX Port Mixer INTERNAL_BT_SCO_RX':1:1
 	EndSequence
 
 	DisableSequence
@@ -938,8 +942,8 @@ SectionVerb
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX_Voice Mixer Voip':1:0
-		'Voip_Tx Mixer AUX_PCM_TX_Voip':1:0
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:0
+		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -952,8 +956,8 @@ SectionVerb
 	Name "Voice Call IPBT SCO Tx"
 
 	EnableSequence
-		'AUX_PCM_RX_Voice Mixer Voip':1:1
-		'Voip_Tx Mixer AUX_PCM_UL_Voip':1:1
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:1
+		'Voip_Tx Mixer INTERNAL_BT_SCO_UL_Voip':1:1
 	EndSequence
 
 	DisableSequence
@@ -972,8 +976,8 @@ SectionVerb
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX_Voice Mixer Voip':1:0
-		'Voip_Tx Mixer AUX_PCM_TX_Voip':1:0
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:0
+		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -986,8 +990,8 @@ SectionVerb
 	Name "Voice Call IPBT SCO WB Tx"
 
 	EnableSequence
-		'AUX_PCM_RX_Voice Mixer Voip':1:1
-		'Voip_Tx Mixer AUX_PCM_TX_Voip':1:1
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:1
+		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:1
 	EndSequence
 
 	DisableSequence
@@ -1276,11 +1280,11 @@ SectionVerb
 	Name "HiFi TunnelBT SCO Rx"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia4':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia4':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -1292,11 +1296,11 @@ SectionVerb
 	Name "HiFi TunnelBT SCO WB Rx"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia4':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia4':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -1471,11 +1475,11 @@ SectionVerb
 	Name "HiFi Lowlatency RecBT SCO Tx"
 
 	EnableSequence
-		'MultiMedia5 Mixer AUX_PCM_UL_TX':1:1
+		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
 	EndSequence
 
 	DisableSequence
-		'MultiMedia5 Mixer AUX_PCM_UL_TX':1:0
+		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -1488,11 +1492,11 @@ SectionVerb
 	Name "HiFi Lowlatency RecBT SCO WB Tx"
 
 	EnableSequence
-		'MultiMedia5 Mixer AUX_PCM_UL_TX':1:1
+		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
 	EndSequence
 
 	DisableSequence
-		'MultiMedia5 Mixer AUX_PCM_UL_TX':1:0
+		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -1676,11 +1680,11 @@ SectionVerb
 	Name "HiFi LowlatencyBT SCO Rx"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia5':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia5':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -1692,11 +1696,11 @@ SectionVerb
 	Name "HiFi LowlatencyBT SCO WB Rx"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia5':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia5':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -1973,24 +1977,22 @@ SectionDevice
     Name "Voice Earpiece Extra Gain"
     Comment "Handset Extra Gain Rx device"
 
-    EnableSequence
-        'SLIM_0_RX Channels':0:One
-        'RX1 MIX1 INP1':0:RX1
-        'RX1 MIX1 INP2':0:RX6
-        'EAR PA Gain':0:POS_6_DB
-        'DAC1 Switch':1:1
-        'RX1 Digital Volume':2:71%
-        'ES325 RX2 Enable':1:1
-    EndSequence
+	EnableSequence
+		'SLIM_0_RX Channels':0:One
+		'RX1 MIX1 INP1':0:RX1
+		'RX1 MIX1 INP2':0:RX6
+		'EAR PA Gain':0:POS_6_DB
+		'DAC1 Switch':1:1
+		'RX1 Digital Volume':2:71%
+	EndSequence
 
-    DisableSequence
-        'RX1 MIX1 INP1':0:ZERO
-        'RX1 MIX1 INP2':0:ZERO
-        'DAC1 Switch':1:0
-        'EAR PA Gain':0:ZERO
-        'RX1 Digital Volume':1:0
-        'ES325 RX2 Enable':1:0
-    EndSequence
+	DisableSequence
+		'RX1 MIX1 INP1':0:ZERO
+		'RX1 MIX1 INP2':0:ZERO
+		'DAC1 Switch':1:0
+		'EAR PA Gain':0:ZERO
+		'RX1 Digital Volume':1:0
+	EndSequence
 
     ACDBID  71:1
 
@@ -2000,24 +2002,22 @@ SectionDevice
 	Name "Voice Earpiece"
 	Comment "Handset Rx device for voice call"
 
-    EnableSequence
-        'SLIM_0_RX Channels':0:One
-        'RX1 MIX1 INP1':0:RX1
-        'RX1 MIX1 INP2':0:RX6
-        'EAR PA Gain':0:POS_6_DB
-        'DAC1 Switch':1:1
-        'RX1 Digital Volume':2:71%
-        'ES325 RX2 Enable':1:1
-    EndSequence
+	EnableSequence
+		'SLIM_0_RX Channels':0:One
+		'RX1 MIX1 INP1':0:RX1
+		'RX1 MIX1 INP2':0:RX6
+		'EAR PA Gain':0:POS_6_DB
+		'DAC1 Switch':1:1
+		'RX1 Digital Volume':2:71%
+	EndSequence
 
-    DisableSequence
-        'RX1 MIX1 INP1':0:ZERO
-        'RX1 MIX1 INP2':0:ZERO
-        'DAC1 Switch':1:0
-        'EAR PA Gain':0:ZERO
-        'RX1 Digital Volume':1:0
-        'ES325 RX2 Enable':1:0
-    EndSequence
+	DisableSequence
+		'RX1 MIX1 INP1':0:ZERO
+		'RX1 MIX1 INP2':0:ZERO
+		'DAC1 Switch':1:0
+		'EAR PA Gain':0:ZERO
+		'RX1 Digital Volume':1:0
+	EndSequence
 
     ACDBID  7:1
 
@@ -2134,25 +2134,23 @@ SectionDevice
     Name "Speaker Extra Gain"
     Comment "Speaker Extra Gain Rx device"
 
-    EnableSequence
-        'SLIM_0_RX Channels':0:One
-        'RX5 MIX1 INP1':0:RX1
-        'RX5 MIX1 INP2':0:RX6
-        'RX6 DSM MUX':0:DSM_INV
-        'LINEOUT2 Volume':1:100
-        'LINEOUT4 Volume':1:100
-        'RX5 Digital Volume':2:67.7%
-        'ES325 RX2 Enable':1:1
-    EndSequence
+	EnableSequence
+		'SLIM_0_RX Channels':0:One
+		'RX5 MIX1 INP1':0:RX1
+		'RX5 MIX1 INP2':0:RX6
+		'RX6 DSM MUX':0:DSM_INV
+		'LINEOUT2 Volume':1:100
+		'LINEOUT4 Volume':1:100
+		'RX5 Digital Volume':2:67.7%
+	EndSequence
 
-    DisableSequence
-        'RX5 MIX1 INP1':0:ZERO
-        'RX5 MIX1 INP2':0:ZERO
-        'LINEOUT2 Volume':1:0
-        'LINEOUT4 Volume':1:0
-        'RX5 Digital Volume':1:0
-        'ES325 RX2 Enable':1:0
-    EndSequence
+	DisableSequence
+		'RX5 MIX1 INP1':0:ZERO
+		'RX5 MIX1 INP2':0:ZERO
+		'LINEOUT2 Volume':1:0
+		'LINEOUT4 Volume':1:0
+		'RX5 Digital Volume':1:0
+	EndSequence
 
     ACDBID  72:1
 
@@ -2162,32 +2160,28 @@ SectionDevice
     Name "Voice Speaker"
     Comment "Speaker for voice call"
 
-    EnableSequence
-        'SLIM_0_RX Channels':0:Two
-        'RX5 MIX1 INP1':0:RX1
-        'RX5 MIX1 INP2':0:RX6
-        'RX6 DSM MUX':0:DSM_INV
-        'RX4 MIX1 INP1':0:RX2
-        'RX4 MIX1 INP2':0:RX7
-        'RX4 DSM MUX':0:CIC_OUT
-        'LINEOUT2 Volume':1:100
-        'LINEOUT4 Volume':1:100
-        'RX5 Digital Volume':2:71%
-        'ES325 RX2 Enable':1:1
-        'VEQ Enable':1:0
-    EndSequence
+	EnableSequence
+		'SLIM_0_RX Channels':0:Two
+		'RX5 MIX1 INP1':0:RX1
+		'RX5 MIX1 INP2':0:RX6
+		'RX6 DSM MUX':0:DSM_INV
+		'RX4 MIX1 INP1':0:RX2
+		'RX4 MIX1 INP2':0:RX7
+		'RX4 DSM MUX':0:CIC_OUT
+		'LINEOUT2 Volume':1:100
+		'LINEOUT4 Volume':1:100
+		'RX5 Digital Volume':2:67.7%
+	EndSequence
 
-    DisableSequence
-        'RX5 MIX1 INP1':0:ZERO
-        'RX5 MIX1 INP2':0:ZERO
-        'RX4 MIX1 INP1':0:ZERO
-        'RX4 MIX1 INP2':0:ZERO
-        'LINEOUT2 Volume':1:0
-        'LINEOUT4 Volume':1:0
-        'RX5 Digital Volume':1:0
-        'ES325 RX2 Enable':1:0
-        'VEQ Enable':1:0
-    EndSequence
+	DisableSequence
+		'RX5 MIX1 INP1':0:ZERO
+		'RX5 MIX1 INP2':0:ZERO
+		'RX4 MIX1 INP1':0:ZERO
+		'RX4 MIX1 INP2':0:ZERO
+		'LINEOUT2 Volume':1:0
+		'LINEOUT4 Volume':1:0
+		'RX5 Digital Volume':1:0
+	EndSequence
 
     ACDBID  15:1
 
@@ -2288,34 +2282,32 @@ SectionDevice
 	Name "Voice Headphones"
 	Comment "Headset Rx device for voice call"
 
-    EnableSequence
-        'SLIM_0_RX Channels':0:Two
-        'RX1 MIX1 INP1':0:RX1
-        'RX1 MIX1 INP2':0:RX6
-        'RX2 MIX1 INP1':0:RX2
-        'RX2 MIX1 INP2':0:RX7
-        'HPHL DAC Switch':1:1
-        'HPHR DAC Switch':1:1
-        'HPHL Volume':1:100
-        'HPHR Volume':1:100
-        'RX1 Digital Volume':2:67.7%
-        'RX2 Digital Volume':2:67.7%
-        'ES325 RX2 Enable':1:1
-    EndSequence
+	EnableSequence
+		'SLIM_0_RX Channels':0:Two
+		'RX1 MIX1 INP1':0:RX1
+		'RX1 MIX1 INP2':0:RX6
+		'RX2 MIX1 INP1':0:RX2
+		'RX2 MIX1 INP2':0:RX7
+		'HPHL DAC Switch':1:1
+		'HPHR DAC Switch':1:1
+		'HPHL Volume':2:66.7%
+		'HPHR Volume':2:66.7%
+		'RX1 Digital Volume':2:66.1%
+		'RX2 Digital Volume':2:66.1%
+	EndSequence
 
-    DisableSequence
-        'RX1 MIX1 INP1':0:ZERO
-        'RX1 MIX1 INP2':0:ZERO
-        'RX2 MIX1 INP1':0:ZERO
-        'RX2 MIX1 INP2':0:ZERO
-        'HPHL DAC Switch':1:0
-        'HPHR DAC Switch':1:0
-        'HPHL Volume':1:0
-        'HPHR Volume':1:0
-        'RX1 Digital Volume':1:0
-        'RX2 Digital Volume':1:0
-        'ES325 RX2 Enable':1:0
-    EndSequence
+	DisableSequence
+		'RX1 MIX1 INP1':0:ZERO
+		'RX1 MIX1 INP2':0:ZERO
+		'RX2 MIX1 INP1':0:ZERO
+		'RX2 MIX1 INP2':0:ZERO
+		'HPHL DAC Switch':1:0
+		'HPHR DAC Switch':1:0
+		'HPHL Volume':1:0
+		'HPHR Volume':1:0
+		'RX1 Digital Volume':1:0
+		'RX2 Digital Volume':1:0
+	EndSequence
 
     ACDBID  10:1
     EffectsMixerCTL "SRS TruMedia"
@@ -2463,7 +2455,7 @@ SectionDevice
         'SLIM TX7 MUX':0:DEC5
         'DEC5 MUX':0:ADC2
         'ADC2 Volume':1:100
-        'DEC5 Volume':2:71%
+        'DEC5 Volume':2:67.7%
     EndSequence
 
     DisableSequence
@@ -2480,24 +2472,19 @@ SectionDevice
     Name "Voice Headset"
     Comment "Call Headset Tx device"
 
-    EnableSequence
-        'SLIM_0_TX Channels':0:One
-        'ES325-AP Tx Channels':0:One
-        'SLIM TX7 MUX':0:DEC5
-        'DEC5 MUX':0:ADC2
-        'ADC2 Volume':1:100
-        'DEC5 Volume':2:67.7%
-        'Internal Route Config':1:0
-        'ES325 TX1 Enable':1:1
-    EndSequence
+	EnableSequence
+		'SLIM_0_TX Channels':0:One
+		'SLIM TX7 MUX':0:DEC5
+		'DEC5 MUX':0:ADC2
+		'ADC2 Volume':1:100
+		'DEC5 Volume':2:67.7%
+	EndSequence
 
-    DisableSequence
-        'SLIM TX7 MUX':0:ZERO
-        'DEC5 MUX':0:ZERO
-        'ADC2 Volume':1:0
-        'Internal Route Config':1:6
-        'ES325 TX1 Enable':1:0
-    EndSequence
+	DisableSequence
+		'SLIM TX7 MUX':0:ZERO
+		'DEC5 MUX':0:ZERO
+		'ADC2 Volume':1:0
+	EndSequence
 
     ACDBID  8:2
 
@@ -2535,7 +2522,7 @@ SectionDevice
         'SLIM TX7 MUX':0:DEC4
         'DEC4 MUX':0:ADC3
         'ADC3 Volume':2:91.7%
-        'DEC4 Volume':2:71%
+        'DEC4 Volume':2:67.7%
         'MICBIAS1 CAPLESS Switch':1:1
     EndSequence
 
@@ -2662,8 +2649,11 @@ SectionDevice
         'SLIM TX7 MUX':0:DEC3
         'DEC3 MUX':0:ADC4
         'ADC4 Volume':1:100
-        'DEC3 Volume':2:67.7%
+        'DEC3 Volume':2:67.7
         'MICBIAS3 CAPLESS Switch':1:1
+        'TX3 HPF cut off':0:MIN_3DB_150Hz
+        'TX4 HPF cut off':0:MIN_3DB_150Hz
+        'TX5 HPF cut off':0:MIN_3DB_150Hz
     EndSequence
 
     DisableSequence
@@ -2671,9 +2661,12 @@ SectionDevice
         'DEC3 MUX':0:ZERO
         'ADC4 Volume':1:0
         'MICBIAS3 CAPLESS Switch':1:0
+        'TX3 HPF cut off':0:MIN_3DB_4Hz
+        'TX4 HPF cut off':0:MIN_3DB_4Hz
+        'TX5 HPF cut off':0:MIN_3DB_4Hz
     EndSequence
 
-    ACDBID  11:2
+    ACDBID  4:2
 
 EndSection
 
@@ -2729,33 +2722,28 @@ SectionDevice
 	Name "TTY Handset Tx"
 	Comment "TTY VCO Handset Tx device"
 
-    EnableSequence
-        'SLIM_0_TX Channels':0:One
-        'SLIM TX7 MUX':0:DEC4
-        'DEC4 MUX':0:ADC3
-        'ADC3 Volume':1:100
-        'DEC4 Volume':2:67.7%
-        'MICBIAS3 CAPLESS Switch':1:1
-        'TX3 HPF cut off':0:MIN_3DB_150Hz
-        'TX4 HPF cut off':0:MIN_3DB_150Hz
-        'TX5 HPF cut off':0:MIN_3DB_150Hz
-        'ES325-AP Tx Channels':0:One
-        'Internal Route Config':1:11
-        'ES325 TX1 Enable':1:1
-    EndSequence
+	EnableSequence
+		'SLIM_0_TX Channels':0:One
+		'SLIM TX7 MUX':0:DEC4
+		'DEC4 MUX':0:ADC3
+		'ADC3 Volume':1:100
+		'DEC4 Volume':2:67.7%
+		'MICBIAS3 CAPLESS Switch':1:1
+		'TX3 HPF cut off':0:MIN_3DB_150Hz
+		'TX4 HPF cut off':0:MIN_3DB_150Hz
+		'TX5 HPF cut off':0:MIN_3DB_150Hz
+	EndSequence
 
-    DisableSequence
-        'SLIM TX7 MUX':0:ZERO
-        'DEC4 MUX':0:ZERO
-        'ADC3 Volume':1:0
-        'DEC4 Volume':1:0
-        'MICBIAS3 CAPLESS Switch':1:0
-        'TX3 HPF cut off':0:MIN_3DB_4Hz
-        'TX4 HPF cut off':0:MIN_3DB_4Hz
-        'TX5 HPF cut off':0:MIN_3DB_4Hz
-        'Internal Route Config':1:6
-        'ES325 TX1 Enable':1:0
-    EndSequence
+	DisableSequence
+		'SLIM TX7 MUX':0:ZERO
+		'DEC4 MUX':0:ZERO
+		'ADC3 Volume':1:0
+		'DEC4 Volume':1:0
+		'MICBIAS3 CAPLESS Switch':1:0
+		'TX3 HPF cut off':0:MIN_3DB_4Hz
+		'TX4 HPF cut off':0:MIN_3DB_4Hz
+		'TX5 HPF cut off':0:MIN_3DB_4Hz
+	EndSequence
 
     ACDBID  4:2
 
@@ -2765,41 +2753,36 @@ SectionDevice
 	Name "DMIC Endfire"
 	Comment "Dual MIC Endfire Tx device"
 
-    EnableSequence
-        'SLIM_0_TX Channels':0:Two
-        'SLIM TX7 MUX':0:DEC4
-        'DEC4 MUX':0:ADC3
-        'ADC3 Volume':1:100
-        'DEC4 Volume':2:67.7%
-        'SLIM TX8 MUX':0:DEC3
-        'DEC3 MUX':0:ADC4
-        'ADC4 Volume':1:100
-        'DEC3 Volume':2:67.7%
-        'MICBIAS3 CAPLESS Switch':1:1
-        'TX3 HPF cut off':0:MIN_3DB_150Hz
-        'TX4 HPF cut off':0:MIN_3DB_150Hz
-        'TX5 HPF cut off':0:MIN_3DB_150Hz
-        'ES325-AP Tx Channels':0:One
-        'Internal Route Config':1:4
-        'ES325 TX1 Enable':1:1
-    EndSequence
+	EnableSequence
+		'SLIM_0_TX Channels':0:Two
+		'SLIM TX7 MUX':0:DEC4
+		'DEC4 MUX':0:ADC3
+		'ADC3 Volume':1:100
+		'DEC4 Volume':2:67.7%
+		'SLIM TX8 MUX':0:DEC3
+		'DEC3 MUX':0:ADC4
+		'ADC4 Volume':1:100
+		'DEC3 Volume':2:67.7%
+		'MICBIAS3 CAPLESS Switch':1:1
+		'TX3 HPF cut off':0:MIN_3DB_150Hz
+		'TX4 HPF cut off':0:MIN_3DB_150Hz
+		'TX5 HPF cut off':0:MIN_3DB_150Hz
+	EndSequence
 
-    DisableSequence
-        'SLIM TX7 MUX':0:ZERO
-        'DEC4 MUX':0:ZERO
-        'ADC3 Volume':1:0
-        'DEC4 Volume':1:0
-        'SLIM TX8 MUX':0:ZERO
-        'DEC3 MUX':0:ZERO
-        'DEC3 Volume':1:0
-        'ADC4 Volume':1:0
-        'MICBIAS3 CAPLESS Switch':1:0
-        'TX3 HPF cut off':0:MIN_3DB_4Hz
-        'TX4 HPF cut off':0:MIN_3DB_4Hz
-        'TX5 HPF cut off':0:MIN_3DB_4Hz
-        'Internal Route Config':1:6
-        'ES325 TX1 Enable':1:0
-    EndSequence
+	DisableSequence
+		'SLIM TX7 MUX':0:ZERO
+		'DEC4 MUX':0:ZERO
+		'ADC3 Volume':1:0
+		'DEC4 Volume':1:0
+		'SLIM TX8 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'DEC3 Volume':1:0
+		'ADC4 Volume':1:0
+		'MICBIAS3 CAPLESS Switch':1:0
+		'TX3 HPF cut off':0:MIN_3DB_4Hz
+		'TX4 HPF cut off':0:MIN_3DB_4Hz
+		'TX5 HPF cut off':0:MIN_3DB_4Hz
+	EndSequence
 
     ACDBID  4:2
 
@@ -2809,79 +2792,76 @@ SectionDevice
 	Name "Speaker DMIC Endfire"
 	Comment "Dual MIC Endfire Tx device"
 
-    EnableSequence
-        'SLIM_0_TX Channels':0:Two
-        'SLIM TX7 MUX':0:DEC2
-        'DEC3 MUX':0:ADC4
-        'ADC4 Volume':1:100
-        'DEC3 Volume':2:67.7%
-        'SLIM TX8 MUX':0:DEC3
-        'DEC2 MUX':0:ADC5
-        'ADC5 Volume':1:100
-        'DEC2 Volume':2:67.7%
-        'MICBIAS3 CAPLESS Switch':1:1
-        'MICBIAS4 CAPLESS Switch':1:1
-        'TX3 HPF cut off':0:MIN_3DB_150Hz
-        'TX4 HPF cut off':0:MIN_3DB_150Hz
-        'TX5 HPF cut off':0:MIN_3DB_150Hz
-        'ES325-AP Tx Channels':0:One
-        'Internal Route Config':1:3
-        'ES325 TX1 Enable':1:1
-    EndSequence
+	EnableSequence
+		'SLIM_0_TX Channels':0:Two
+		'SLIM TX7 MUX':0:DEC2
+		'DEC3 MUX':0:ADC4
+		'ADC4 Volume':1:100
+		'DEC3 Volume':2:67.7%
+		'SLIM TX8 MUX':0:DEC3
+		'DEC2 MUX':0:ADC5
+		'ADC5 Volume':1:100
+		'DEC2 Volume':2:67.7%
+		'MICBIAS3 CAPLESS Switch':1:1
+		'TX3 HPF cut off':0:MIN_3DB_150Hz
+		'TX4 HPF cut off':0:MIN_3DB_150Hz
+		'TX5 HPF cut off':0:MIN_3DB_150Hz
+	EndSequence
 
-    DisableSequence
-        'SLIM TX7 MUX':0:ZERO
-        'DEC3 MUX':0:ZERO
-        'DEC3 Volume':1:0
-        'ADC4 Volume':1:0
-        'SLIM TX8 MUX':0:ZERO
-        'DEC2 MUX':0:ZERO
-        'DEC2 Volume':1:0
-        'ADC5 Volume':1:0
-        'MICBIAS3 CAPLESS Switch':1:0
-        'MICBIAS4 CAPLESS Switch':1:0
-        'TX3 HPF cut off':0:MIN_3DB_4Hz
-        'TX4 HPF cut off':0:MIN_3DB_4Hz
-        'TX5 HPF cut off':0:MIN_3DB_4Hz
-        'Internal Route Config':1:6
-        'ES325 TX1 Enable':1:0
-    EndSequence
+	DisableSequence
+		'SLIM TX7 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'DEC3 Volume':1:0
+		'ADC4 Volume':1:0
+		'SLIM TX8 MUX':0:ZERO
+		'DEC2 MUX':0:ZERO
+		'DEC2 Volume':1:0
+		'ADC5 Volume':1:0
+		'MICBIAS3 CAPLESS Switch':1:0
+		'TX3 HPF cut off':0:MIN_3DB_4Hz
+		'TX4 HPF cut off':0:MIN_3DB_4Hz
+		'TX5 HPF cut off':0:MIN_3DB_4Hz
+	EndSequence
 
     ACDBID  11:2
 
 EndSection
 
 SectionDevice
-    Name "Speaker DMIC Stereo"
-    Comment "Stereo Mic Tx device"
+	Name "Speaker DMIC Stereo"
+	Comment "Stereo Mic Tx device"
 
-    EnableSequence
-        'SLIM_0_TX Channels':0:Two
-        'SLIM TX8 MUX':0:DEC3
-        'DEC3 MUX':0:ADC4
-        'ADC4 Volume':2:91.7%
-        'DEC3 Volume':2:66.9%
-        'SLIM TX7 MUX':0:DEC4
-        'DEC4 MUX':0:ADC3
-        'ADC3 Volume':2:91.7%
-        'DEC4 Volume':2:67.7%
-        'MICBIAS1 CAPLESS Switch':1:1
-        'MICBIAS3 CAPLESS Switch':1:1
-    EndSequence
+	EnableSequence
+		'SLIM_0_TX Channels':0:Two
+		'SLIM TX8 MUX':0:DEC3
+		'DEC3 MUX':0:ADC4
+		'ADC4 Volume':2:100
+		'DEC3 Volume':2:70
+		'SLIM TX7 MUX':0:DEC4
+		'DEC4 MUX':0:ADC3
+		'ADC3 Volume':2:100
+		'DEC4 Volume':2:70
+		'MICBIAS3 CAPLESS Switch':1:1
+		'TX3 HPF cut off':0:MIN_3DB_150Hz
+		'TX4 HPF cut off':0:MIN_3DB_150Hz
+		'TX5 HPF cut off':0:MIN_3DB_150Hz
+	EndSequence
 
-    DisableSequence
-        'SLIM TX7 MUX':0:ZERO
-        'DEC3 MUX':0:ZERO
-        'ADC4 Volume':1:0
-        'SLIM TX8 MUX':0:ZERO
-        'DEC4 MUX':0:ZERO
-        'ADC3 Volume':1:0
-        'MICBIAS1 CAPLESS Switch':1:0
-        'MICBIAS3 CAPLESS Switch':1:0
-    EndSequence
+	DisableSequence
+		'SLIM TX7 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'ADC4 Volume':1:0
+		'SLIM TX8 MUX':0:ZERO
+		'DEC4 MUX':0:ZERO
+		'ADC3 Volume':1:0
+		'MICBIAS3 CAPLESS Switch':1:0
+		'TX3 HPF cut off':0:MIN_3DB_4Hz
+		'TX4 HPF cut off':0:MIN_3DB_4Hz
+		'TX5 HPF cut off':0:MIN_3DB_4Hz
+	EndSequence
 
-    ACDBID  56:2
-
+    ACDBID	11:2
+	
 EndSection
 
 SectionDevice
@@ -2913,7 +2893,7 @@ SectionDevice
         'MICBIAS3 CAPLESS Switch':1:0
     EndSequence
 
-    ACDBID  56:2
+    ACDBID  11:2
 
 EndSection
 
@@ -2933,8 +2913,6 @@ SectionDevice
         'HPHR Volume':1:100
         'RX1 Digital Volume':2:67.7%
         'RX2 Digital Volume':2:67.7%
-        'Internal Route Config':1:6
-        'ES325 RX2 Enable':1:1
     EndSequence
 
     DisableSequence
@@ -2948,8 +2926,6 @@ SectionDevice
         'HPHR Volume':1:0
         'RX1 Digital Volume':1:0
         'RX2 Digital Volume':1:0
-        'Internal Route Config':1:6
-        'ES325 RX2 Enable':1:0
     EndSequence
 
     ACDBID  102:1
@@ -2962,21 +2938,16 @@ SectionDevice
 
     EnableSequence
         'SLIM_0_TX Channels':0:One
-        'ES325-AP Tx Channels':0:One
         'SLIM TX7 MUX':0:DEC5
         'DEC5 MUX':0:ADC2
         'ADC2 Volume':1:100
         'DEC5 Volume':2:67.7%
-        'Internal Route Config':1:12
-        'ES325 TX1 Enable':1:1
     EndSequence
 
     DisableSequence
         'SLIM TX7 MUX':0:ZERO
         'DEC5 MUX':0:ZERO
         'ADC2 Volume':1:0
-        'Internal Route Config':1:6
-        'ES325 TX1 Enable':1:0
     EndSequence
 
     ACDBID  101:2
@@ -2999,8 +2970,6 @@ SectionDevice
         'HPHR Volume':1:100
         'RX1 Digital Volume':2:67.7%
         'RX2 Digital Volume':2:67.7%
-        'Internal Route Config':1:6
-        'ES325 RX2 Enable':1:1
     EndSequence
 
     DisableSequence
@@ -3014,8 +2983,6 @@ SectionDevice
         'HPHR Volume':1:0
         'RX1 Digital Volume':1:0
         'RX2 Digital Volume':1:0
-        'Internal Route Config':1:6
-        'ES325 RX2 Enable':1:0
     EndSequence
 
     ACDBID  102:1
@@ -3028,21 +2995,16 @@ SectionDevice
 
     EnableSequence
         'SLIM_0_TX Channels':0:One
-        'ES325-AP Tx Channels':0:One
         'SLIM TX7 MUX':0:DEC5
         'DEC5 MUX':0:ADC2
         'ADC2 Volume':1:100
         'DEC5 Volume':2:67.7%
-        'Internal Route Config':1:0
-        'ES325 TX1 Enable':1:1
     EndSequence
 
     DisableSequence
         'SLIM TX7 MUX':0:ZERO
         'DEC5 MUX':0:ZERO
         'ADC2 Volume':1:0
-        'Internal Route Config':1:6
-        'ES325 TX1 Enable':1:0
     EndSequence
 
     ACDBID  101:2
@@ -3425,11 +3387,11 @@ SectionModifier
 	Comment "Modifier for music playback"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia1':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia1':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -3443,11 +3405,11 @@ SectionModifier
 	Comment "Modifier for music playback"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia1':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia1':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -3655,11 +3617,11 @@ SectionModifier
 	Name "Play LPABT SCO Rx"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia3':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia3':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -3671,11 +3633,11 @@ SectionModifier
 	Name "Play LPABT SCO WB Rx"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia3':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia3':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -3736,11 +3698,11 @@ SectionModifier
 	Name "Capture MusicBT SCO Tx"
 
 	EnableSequence
-		'MultiMedia1 Mixer AUX_PCM_UL_TX':1:1
+		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
 	EndSequence
 
 	DisableSequence
-		'MultiMedia1 Mixer AUX_PCM_UL_TX':1:0
+		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -3753,11 +3715,11 @@ SectionModifier
 	Name "Capture MusicBT SCO WB Tx"
 
 	EnableSequence
-		'MultiMedia1 Mixer AUX_PCM_UL_TX':1:1
+		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:1
 	EndSequence
 
 	DisableSequence
-		'MultiMedia1 Mixer AUX_PCM_UL_TX':1:0
+		'MultiMedia1 Mixer INTERNAL_BT_SCO_TX':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -3902,14 +3864,15 @@ SectionModifier
 	EndSequence
 
 	DisableSequence
-        'Voice Stub Tx Mixer AUX_PCM_UL_TX':1:0
-        'SLIMBUS_1_RX Mixer Voice Stub':1:0
-        'Voice Stub Tx Mixer SLIM_1_TX':1:0
-        'AUX_PCM_RX_Voice Mixer Voice Stub':1:0
-        'SLIMBUS_1_RX Port Mixer AUX_PCM_UL_TX':1:0
-        'AUXPCM_RX Port Mixer SLIM_1_TX':1:0
-        'SLIMBUS_3_RX_Voice Mixer Voice Stub':1:0
-    'SLIMBUS_3_RX Port Mixer AUX_PCM_DL_RX':1:0
+		'Internal BTSCO SampleRate':0:8000
+		'Voice Stub Tx Mixer INTERNAL_BT_SCO_TX':1:0
+		'SLIMBUS_1_RX Mixer Voice Stub':1:0
+		'Voice Stub Tx Mixer SLIM_1_TX':1:0
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voice Stub':1:0
+		'SLIMBUS_1_RX Port Mixer INTERNAL_BT_SCO_TX':1:0
+		'INTERNAL_BT_SCO_RX Port Mixer SLIM_1_TX':1:0
+		'SLIMBUS_3_RX_Voice Mixer Voice Stub':1:0
+		'SLIMBUS_3_RX Port Mixer INTERNAL_BT_SCO_RX':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -3921,17 +3884,18 @@ EndSection
 SectionModifier
 	Name "Play VoiceBT SCO Tx"
 
-    EnableSequence
-        'Voice Stub Tx Mixer AUX_PCM_UL_TX':1:1
-        'SLIMBUS_1_RX Mixer Voice Stub':1:1
-        'Voice Stub Tx Mixer SLIM_1_TX':1:1
-        'AUX_PCM_RX_Voice Mixer Voice Stub':1:1
-        'SLIMBUS_1_RX Port Mixer AUX_PCM_UL_TX':1:1
-        'AUXPCM_RX Port Mixer SLIM_1_TX':1:1
-        'SLIM_3_RX Channels':0:One
-        'SLIMBUS_3_RX_Voice Mixer Voice Stub':1:1
-    'SLIMBUS_3_RX Port Mixer AUX_PCM_DL_RX':1:1
-    EndSequence
+	EnableSequence
+		'Internal BTSCO SampleRate':0:8000
+		'Voice Stub Tx Mixer INTERNAL_BT_SCO_TX':1:1
+		'SLIMBUS_1_RX Mixer Voice Stub':1:1
+		'Voice Stub Tx Mixer SLIM_1_TX':1:1
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voice Stub':1:1
+		'SLIMBUS_1_RX Port Mixer INTERNAL_BT_SCO_TX':1:1
+		'INTERNAL_BT_SCO_RX Port Mixer SLIM_1_TX':1:1
+		'SLIM_3_RX Channels':0:One
+		'SLIMBUS_3_RX_Voice Mixer Voice Stub':1:1
+		'SLIMBUS_3_RX Port Mixer INTERNAL_BT_SCO_RX':1:1
+	EndSequence
 
 	DisableSequence
 	EndSequence
@@ -3949,14 +3913,14 @@ SectionModifier
 	EndSequence
 
 	DisableSequence
-		'Voice Stub Tx Mixer AUX_PCM_UL_TX':1:0
+		'Voice Stub Tx Mixer INTERNAL_BT_SCO_TX':1:0
 		'SLIMBUS_1_RX Mixer Voice Stub':1:0
 		'Voice Stub Tx Mixer SLIM_1_TX':1:0
-		'AUX_PCM_RX_Voice Mixer Voice Stub':1:0
-		'SLIMBUS_1_RX Port Mixer AUX_PCM_UL_TX':1:0
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voice Stub':1:0
+		'SLIMBUS_1_RX Port Mixer INTERNAL_BT_SCO_TX':1:0
 		'AUXPCM_RX Port Mixer SLIM_1_TX':1:0
 		'SLIMBUS_3_RX_Voice Mixer Voice Stub':1:0
-		'SLIMBUS_3_RX Port Mixer AUX_PCM_DL_RX':1:0
+		'SLIMBUS_3_RX Port Mixer INTERNAL_BT_SCO_RX':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -3969,15 +3933,15 @@ SectionModifier
 	Name "Play VoiceBT SCO WB Tx"
 
 	EnableSequence
-		'Voice Stub Tx Mixer AUX_PCM_UL_TX':1:1
+		'Voice Stub Tx Mixer INTERNAL_BT_SCO_TX':1:1
 		'SLIMBUS_1_RX Mixer Voice Stub':1:1
 		'Voice Stub Tx Mixer SLIM_1_TX':1:1
-		'AUX_PCM_RX_Voice Mixer Voice Stub':1:1
-		'SLIMBUS_1_RX Port Mixer AUX_PCM_UL_TX':1:1
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voice Stub':1:1
+		'SLIMBUS_1_RX Port Mixer INTERNAL_BT_SCO_TX':1:1
 		'AUXPCM_RX Port Mixer SLIM_1_TX':1:1
 		'SLIM_3_RX Channels':0:One
 		'SLIMBUS_3_RX_Voice Mixer Voice Stub':1:1
-		'SLIMBUS_3_RX Port Mixer AUX_PCM_DL_RX':1:1
+		'SLIMBUS_3_RX Port Mixer INTERNAL_BT_SCO_RX':1:1
 	EndSequence
 
 	DisableSequence
@@ -4101,8 +4065,8 @@ SectionModifier
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX_Voice Mixer Voip':1:0
-		'Voip_Tx Mixer AUX_PCM_TX_Voip':1:0
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:0
+		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -4115,8 +4079,8 @@ SectionModifier
 	Name "Play VOIPBT SCO Tx"
 
 	EnableSequence
-		'AUX_PCM_RX_Voice Mixer Voip':1:1
-		'Voip_Tx Mixer AUX_PCM_TX_Voip':1:1
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:1
+		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:1
 	EndSequence
 
 	DisableSequence
@@ -4135,8 +4099,8 @@ SectionModifier
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX_Voice Mixer Voip':1:0
-		'Voip_Tx Mixer AUX_PCM_TX_Voip':1:0
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:0
+		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -4149,8 +4113,8 @@ SectionModifier
 	Name "Play VOIPBT SCO WB Tx"
 
 	EnableSequence
-		'AUX_PCM_RX_Voice Mixer Voip':1:1
-		'Voip_Tx Mixer AUX_PCM_TX_Voip':1:1
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voip':1:1
+		'Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip':1:1
 	EndSequence
 
 	DisableSequence
@@ -4438,11 +4402,11 @@ SectionModifier
 	Name "Play TunnelBT SCO Rx"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia4':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia4':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -4454,11 +4418,11 @@ SectionModifier
 	Name "Play TunnelBT SCO WB Rx"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia4':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia4':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -4616,11 +4580,11 @@ SectionModifier
 	Comment "Modifier for music playback"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia5':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia5':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -4634,11 +4598,11 @@ SectionModifier
 	Comment "Modifier for music playback"
 
 	EnableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia5':1:1
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:1
 	EndSequence
 
 	DisableSequence
-		'AUX_PCM_RX Audio Mixer MultiMedia5':1:0
+		'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -4702,11 +4666,11 @@ SectionModifier
 	Name "Capture Lowlatency MusicBT SCO Tx"
 
 	EnableSequence
-		'MultiMedia5 Mixer AUX_PCM_UL_TX':1:1
+		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
 	EndSequence
 
 	DisableSequence
-		'MultiMedia5 Mixer AUX_PCM_UL_TX':1:0
+		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -4719,11 +4683,11 @@ SectionModifier
 	Name "Capture Lowlatency MusicBT SCO WB Tx"
 
 	EnableSequence
-		'MultiMedia5 Mixer AUX_PCM_UL_TX':1:1
+		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
 	EndSequence
 
 	DisableSequence
-		'MultiMedia5 Mixer AUX_PCM_UL_TX':1:0
+		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -4753,11 +4717,11 @@ SectionModifier
 	Name "Capture Lowlatency MusicBT SCO WB Tx"
 
 	EnableSequence
-		'MultiMedia5 Mixer AUX_PCM_UL_TX':1:1
+		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:1
 	EndSequence
 
 	DisableSequence
-		'MultiMedia5 Mixer AUX_PCM_UL_TX':1:0
+		'MultiMedia5 Mixer INTERNAL_BT_SCO_TX':1:0
 	EndSequence
 
 	# ALSA PCMs
