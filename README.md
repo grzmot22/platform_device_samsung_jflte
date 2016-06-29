@@ -4,7 +4,7 @@ The Android Open Source Project - Galaxy S4
 
 # Copyright (C) 2016 The JDCTeam
 
-AOSP device configuration for **unified variants**:
+SLIM device configuration for **unified variants**:
 - *GT-I9505*
 - *GT-I9505G*
 - *GT-I9507*
