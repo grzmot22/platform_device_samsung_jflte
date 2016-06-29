@@ -15,6 +15,6 @@
 # limitations under the License.
 #
 
-add_lunch_combo aosp_jflte-eng
-add_lunch_combo aosp_jflte-user
-add_lunch_combo aosp_jflte-userdebug
+add_lunch_combo slim_jflte-eng
+add_lunch_combo slim_jflte-user
+add_lunch_combo slim_jflte-userdebug
