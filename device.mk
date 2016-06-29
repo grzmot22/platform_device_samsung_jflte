@@ -227,7 +227,7 @@ PRODUCT_PACKAGES += \
     libstlport
 
 # Device specific applications
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     SamsungServiceMode \
     STweaks
 
