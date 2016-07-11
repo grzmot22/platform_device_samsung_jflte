@@ -26,7 +26,7 @@
 $(call inherit-product, device/samsung/jflte/full_jflte.mk)
 
 # Inherit our stuff.
-$(call inherit-product, vendor/jdc/config/common.mk)
+$(call inherit-product, vendor/slim/config/common.mk)
 
 PRODUCT_NAME := slim_jflte
   
