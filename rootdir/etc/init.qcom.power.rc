@@ -140,5 +140,15 @@ on property:dev.bootcomplete=1
     # Set iosched
     setprop sys.io.scheduler bfq
 
-    rm /data/system/perfd/default_values
-    start mpdecision
+# Configure IO scheduler
+on property:sys.io.scheduler=*
+    write /sys/block/mmcblk1/queue/scheduler ${sys.io.scheduler}
+
+# Set slice_idle to 0 for CFQ
+on property:sys.io.scheduler=cfq
+    write /sys/block/mmcblk1/queue/iosched/slice_idle 0
+
+# Set slice_idle to 0 for BFQ
+on property:sys.io.scheduler=bfq
+    write /sys/block/mmcblk1/queue/iosched/slice_idle 0
+>>>>>>> 78eb3dd... jf: Configure mmcblk1 IO on sys.io.scheduler
