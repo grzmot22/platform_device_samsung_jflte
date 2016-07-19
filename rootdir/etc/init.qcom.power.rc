@@ -121,6 +121,9 @@ on enable-low-power
 
     write /dev/cpuctl/cpu.notify_on_migrate 1
 
+    rm /data/system/perfd/default_values
+    start mpdecision
+
 on property:init.svc.recovery=running
     trigger enable-low-power
 
@@ -151,4 +154,3 @@ on property:sys.io.scheduler=cfq
 # Set slice_idle to 0 for BFQ
 on property:sys.io.scheduler=bfq
     write /sys/block/mmcblk1/queue/iosched/slice_idle 0
->>>>>>> 78eb3dd... jf: Configure mmcblk1 IO on sys.io.scheduler
