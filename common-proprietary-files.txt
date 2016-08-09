@@ -120,7 +120,6 @@ vendor/lib/libuiblur.so
 
 # Graphics firmware
 etc/firmware/vidc_1080p.fw
-etc/firmware/vidcfw.elf
 
 # HDCP
 bin/insthk
@@ -147,7 +146,6 @@ etc/sec_config
 bin/radish
 
 # Sensors
-lib/libgnustl_shared.so
 lib/libsam.so
 lib/libsensirion_j1.so
 lib/hw/sensors.msm8960.so
